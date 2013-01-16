@@ -1,0 +1,33 @@
+{
+    "name": "CSS and XPath checker",
+    "version": "0.2",
+    "description": "Show CSS and XPath selector with Highlight",
+    "icons": {
+	"128": "icon_128.png",
+	"16": "icon_16.png",
+	"48": "icon_48.png"
+    },
+    "manifest_version": 2,
+    "browser_action": {
+	"default_title": "",
+	"default_icon": "icon_19.png",
+	"default_popup": "popup.html"
+    },
+    
+    "content_scripts": [{
+	"matches": [
+	    "http://*/*",
+	    "https://*/*"
+	],
+	"js": [
+	    "3rdparty/jquery.min.js",
+	    "3rdparty/jquery.xpath.js"
+	]
+    }],
+    "permissions": [
+	"tabs",
+	"http://*/*",
+	"https://*/*",
+	"file:///*"
+    ]
+}
