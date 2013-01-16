@@ -1,7 +1,7 @@
 {
     "name": "CSS and XPath checker",
-    "version": "0.4",
-    "description": "Show CSS and XPath selector with Highlight",
+    "version": "0.6",
+    "description": "Helper tool of to confirm CSS and XPath selector.",
     "icons": {
 	"128": "icon_128.png",
 	"16": "icon_16.png",
@@ -27,7 +27,6 @@
     "permissions": [
 	"tabs",
 	"http://*/*",
-	"https://*/*",
-	"file:///*"
+	"https://*/*"
     ]
 }
