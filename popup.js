@@ -5,6 +5,19 @@ $(document).ready(function(){
     clear_css();
 
     var ls = localStorage['selector'];
+    var type = localStorage['type'];
+
+    if (type == 'xpath') {
+	$('input[name="type"]').val(['xpath']);
+    } else {
+	$('input[name="type"]').val(['css']);
+
+    }
+
+    $('input[name="type"]:radio').change( function() {  
+	localStorage['type'] = $(this).val();
+    });  
+
 
     $('#selector').val(ls);
 
