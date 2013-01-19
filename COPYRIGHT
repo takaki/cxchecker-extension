@@ -1,6 +1,6 @@
 Files: *
 Copyright: TANIGUCHI Takaki <takaki@asis.media-as.org>
-License: GPL-3+
+License: GPL
 
 Files: 3rdpary/jquery.min.js
 Copyright: 2013 jQuery Foundation and other contributors
