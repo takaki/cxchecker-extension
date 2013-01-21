@@ -1,6 +1,6 @@
 {
     "name": "CSS and XPath checker",
-    "version": "0.6",
+    "version": "0.7",
     "description": "Helper tool of to confirm CSS and XPath selector.",
     "icons": {
 	"128": "icon_128.png",
@@ -21,7 +21,8 @@
 	],
 	"js": [
 	    "3rdparty/jquery.min.js",
-	    "3rdparty/jquery.xpath.js"
+	    "3rdparty/jquery.xpath.js",
+	    "cxchecker.js"
 	]
     }],
     "permissions": [

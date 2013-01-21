@@ -27,24 +27,25 @@ $(document).ready(function(){
             var selector = $(this).val();
 	    clear_css();
 	    localStorage['selector'] = selector;
-	    var esc_selector = selector
-		.replace(/\\/g,'\\\\')
-		.replace(/'/g,'\\\'');
-				
-	    // $('#debug').text(selector);
+
 	    if ($('input[name="type"]:checked').val() == 'css'){
-		var f = "$('";
+		var type = 'css';
             } else {
-                var f = "$.xpath('";
+		var type = 'xpath';
             }     
-	    chrome.tabs.executeScript(
-		null,
-		{
-		    code:
-		    f + esc_selector + "').css('background','#c88');" + 
-			f + esc_selector + "').css('border','solid 2px red')"
-		});
+
+	    chrome.tabs.getSelected(null, function(tab) {
+		chrome.tabs.sendRequest(
+		    tab.id, {
+			type: type,
+			query: selector
+		    },
+		    function(response) {
+			$('#match').text(response.length);
+			console.log(response.farewell);
+		    });
 	    });
+	});
 
     $('#selector').click();
 });
