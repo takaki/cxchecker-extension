@@ -21,7 +21,7 @@ icon_128.png: icon_128.xcf
 dist: all
 	rm -rf $(PROJECT) $(PROJECT).zip
 	mkdir $(PROJECT)
-	cp -a *.png popup.* manifest.json COPYRIGHT Makefile 3rdparty $(PROJECT)
+	cp -a *.png popup.* *.js manifest.json COPYRIGHT Makefile 3rdparty $(PROJECT)
 	zip -r $(PROJECT).zip $(PROJECT)
 	rm -rf $(PROJECT)
 
