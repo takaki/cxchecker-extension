@@ -1,0 +1,33 @@
+{
+  "name": "cxchecker-extension",
+  "version": "0.9.0",
+  "description": "A helper tool for to confirm CSS and XPath selector.",
+  "main": "popup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/takaki/cxchecker-extension.git"
+  },
+  "keywords": [
+    "chrome",
+    "css",
+    "xpath"
+  ],
+  "author": "TANIGUCHI Takaki <takaki@asis.media-as.org>",
+  "license": "GPL3",
+  "bugs": {
+    "url": "https://github.com/takaki/cxchecker-extension/issues"
+  },
+  "dependencies": {
+    "jquery": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "webpack": "^1.13.1"
+  }
+}
