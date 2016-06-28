@@ -54,13 +54,8 @@ $(document).ready(function() {
 function clear_css() {
     chrome.tabs.executeScript(
         null, {
-            code: "$('*').css('background','');" +
-                "$('*').css('border','')"
-        }
-    );
-    chrome.tabs.insertCSS(
-        null, {
-            code: "* {background: '', border: ''}"
+            code: "document.querySelectorAll('*').forEach(function(e){e.style.background=''});"+
+                "document.querySelectorAll('*').forEach(function(e){e.style.border=''});"
         }
     );
 }
