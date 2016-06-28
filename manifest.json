@@ -1,6 +1,6 @@
 {
     "name": "CSS and XPath checker",
-    "version": "0.7",
+    "version": "0.9",
     "description": "Helper tool of to confirm CSS and XPath selector.",
     "icons": {
 	"128": "icon_128.png",
@@ -13,7 +13,7 @@
 	"default_icon": "icon_19.png",
 	"default_popup": "popup.html"
     },
-    
+
     "content_scripts": [{
 	"matches": [
 	    "http://*/*",
