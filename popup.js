@@ -1,7 +1,7 @@
 // Copyright (c) 2013 TANIGUCHI Takaki
 // License: GPL version 3 or later
 
-$(document).ready(function() {
+var onReady = function() {
     clear_css();
 
     var ls = localStorage['selector'];
@@ -48,8 +48,7 @@ $(document).ready(function() {
         });
 
     $('#selector').click();
-});
-
+};
 
 function clear_css() {
     chrome.tabs.executeScript(
@@ -58,4 +57,10 @@ function clear_css() {
                 "document.querySelectorAll('*').forEach(function(e){e.style.border=''});"
         }
     );
+}
+
+if (document.readyState !== 'loading') {
+    onReady();
+} else {
+    document.addEventListener('DOMContentLoaded', onReady);
 }
