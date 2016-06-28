@@ -1,5 +1,5 @@
 PROJECT := cxchecker-extension
-all: icon_16.png icon_19.png icon_48.png 3rdparty/jquery.min.js 3rdparty/jquery.xpath.js
+all: icon_16.png icon_19.png icon_48.png bundle.js
 
 icon_16.png: icon_128.png
 	convert -resize 16x16 $< $@
@@ -10,10 +10,13 @@ icon_48.png: icon_128.png
 icon_128.png: icon_128.xcf
 	xcf2png $< > $@
 
+bundle.js: popup.js
+	webpack --color --progress
+
 dist: all
 	rm -rf $(PROJECT) $(PROJECT).zip
 	mkdir $(PROJECT)
-	cp -a *.png popup.* *.js manifest.json COPYRIGHT Makefile 3rdparty $(PROJECT)
+	cp -a *.png popup.html bundle.js cxchecker.js manifest.json COPYRIGHT Makefile $(PROJECT)
 	zip -r $(PROJECT).zip $(PROJECT)
 	rm -rf $(PROJECT)
 
