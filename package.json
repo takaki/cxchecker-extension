@@ -21,7 +21,6 @@
     "url": "https://github.com/takaki/cxchecker-extension/issues"
   },
   "dependencies": {
-    "jquery": "^3.0.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0"
   },
