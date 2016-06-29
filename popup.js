@@ -29,8 +29,7 @@ var App = React.createClass({
     clear: function() {
         chrome.tabs.executeScript(
             null, {
-                code: "document.querySelectorAll('*').forEach(function(e){e.style.background=''});"+
-                    "document.querySelectorAll('*').forEach(function(e){e.style.border=''});"
+                code: "cleanCss()"
             }
         );
         this.setState({match: 0});

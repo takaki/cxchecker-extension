@@ -1,7 +1,7 @@
 // Copyright (c) 2013 TANIGUCHI Takaki
 // License: GPL version 3 or later
 
-var onReady = function(){
+var onReady = function() {
     chrome.extension.onRequest.addListener(
         function(request, sender, sendResponse) {
             if (request.type === 'css') {
@@ -9,18 +9,29 @@ var onReady = function(){
             } else {
                 var nodes = document.evaluate(request.query, document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
                 var result = []
-                for(var i=0;i<nodes.snapshotLength;i++){
+                for (var i = 0; i < nodes.snapshotLength; i++) {
                     result.push(nodes.snapshotItem(i));
                 }
             }
-            for(var i=0;i<result.length;i++){
+            for (var i = 0; i < result.length; i++) {
                 var node = result[i];
                 node.style.background = '#c88';
                 node.style.border = 'solid 2px red';
             }
-            sendResponse({length: result.length});
+            sendResponse({
+                length: result.length
+            });
         }
     );
+}
+
+var cleanCss = function() {
+    document.querySelectorAll('*').forEach(function(e) {
+        e.style.background = ''
+    });
+    document.querySelectorAll('*').forEach(function(e) {
+        e.style.border = ''
+    });
 }
 
 if (document.readyState !== 'loading') {
