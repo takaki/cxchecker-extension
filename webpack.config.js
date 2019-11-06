@@ -1,12 +1,17 @@
 module.exports = {
+  mode: 'production',
   entry: "./popup.js",
   output: {
     path: __dirname,
     filename: "bundle.js"
   },
   module: {
-    loaders: [
-      { test: /\.js$/,  loader: "babel-loader" , exclude: /node_modules/ }
-    ]
+    rules: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: {
+        loader: "babel-loader"
+      }
+    }]
   },
 }
