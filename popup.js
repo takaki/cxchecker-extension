@@ -5,7 +5,7 @@ import  React from 'react';
 import  ReactDOM from 'react-dom';
 
 var App = React.createClass({
-    getInitialState: function() {
+    getInitialState: () => {
         var selector = localStorage['selector'];
         var type = localStorage['type'];
         return {
@@ -64,9 +64,9 @@ var App = React.createClass({
 
         )
     }
-})
+});
 
 ReactDOM.render(
     <App />,
     document.getElementById('content')
-)
+);
