@@ -10,13 +10,13 @@ icon_48.png: icon_128.png
 icon_128.png: icon_128.xcf
 	xcf2png $< > $@
 
-bundle.js: popup.js
+bundle.js: popup.tsx
 	webpack --color --progress
 
 dist: all
 	rm -rf $(PROJECT) $(PROJECT).zip
 	mkdir $(PROJECT)
-	cp -a *.png popup.html bundle.js cxchecker.js manifest.json COPYRIGHT Makefile $(PROJECT)
+	cp -a *.png popup.html bundle.js cxchecker.ts manifest.json COPYRIGHT Makefile $(PROJECT)
 	zip -r $(PROJECT).zip $(PROJECT)
 	rm -rf $(PROJECT)
 
