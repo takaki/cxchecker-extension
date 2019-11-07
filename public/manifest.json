@@ -13,7 +13,6 @@
 	"default_icon": "icon_19.png",
 	"default_popup": "popup.html"
     },
-
     "content_scripts": [{
 	"matches": [
 	    "http://*/*",

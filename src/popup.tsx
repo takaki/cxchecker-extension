@@ -1,72 +1,67 @@
 // Copyright (c) 2013 TANIGUCHI Takaki
 // License: GPL version 3 or later
 
-import  React from 'react';
-import  ReactDOM from 'react-dom';
+import * as React from 'react';
+import { ChangeEvent } from 'react';
+import * as ReactDOM from 'react-dom';
 
-var App = React.createClass({
-    getInitialState: () => {
-        var selector = localStorage['selector'];
-        var type = localStorage['type'];
-        return {
+
+const App: React.FC = props => {
+  React.useEffect(() => {
+    pickup()
+  });
+  const [match, setMatch] = React.useState(0);
+  const [type, setType] = React.useState(() => localStorage['type'] || "css");
+  const [selector, setSelector] = React.useState(() => localStorage['selector'] || "");
+
+  const onRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
+    var val = e.target.value;
+    localStorage['type'] = val;
+    setType(val || "css");
+    pickup();
+  };
+
+  const onTextChange = (e: ChangeEvent<HTMLInputElement>) => {
+    var val = e.target.value;
+    localStorage['selector'] = val;
+    setSelector(val || "");
+    pickup();
+  };
+
+  const pickup = () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      const tab = tabs[0];
+      if (tab.id != undefined) {
+        chrome.tabs.sendMessage(
+          tab.id, {
             type: type,
-            selector: selector,
-            match: 0,
-        }
-    },
-    _onRadioChange: function(e) {
-        var val = e.currentTarget.value;
-        localStorage['type'] = val;
-        this.setState({type: val});
-        this.pickup();
-    },
-    _onTextChange: function(e) {
-        var val = e.currentTarget.value;
-        localStorage['selector'] = val;
-        this.setState({selector: val});
-        this.pickup();
-    },
-    clear: function() {
-        chrome.tabs.executeScript(
-            null, {
-                code: "cleanCss()"
-            }
-        );
-        this.setState({match: 0});
-    },
-    pickup: function() {
-        this.clear();
-        chrome.tabs.getSelected(null, function(tab) {
-            chrome.tabs.sendRequest(
-                tab.id, {
-                    type: this.state.type,
-                    query: this.state.selector
-                },
-                function(response) {
-                    this.setState({match: response.length});
-                }.bind(this))
-        }.bind(this))
-    },
-    componentDidMount: function(){
-        this.pickup()
-    },
-    render: function() {
-        return (
-            <div>
-                <div>React CSS and XPath checker</div>
-                <input type="radio" name="rtype" value="css" onChange={this._onRadioChange} checked={this.state.type === 'css'} />
-                <label>CSS</label>
-                <input type="radio" name="rtype" value="xpath" onChange={this._onRadioChange} checked={this.state.type === 'xpath'} />
-                <label>XPath</label> /
-                <span>{this.state.match}</span> match(es)
-                <input type="text" size="40" value={this.state.selector} onChange={this._onTextChange}  />
-            </div>
+            query: selector
+          },
+          function (response: { length: number }) {
+            setMatch(response?.length || 0);
+          })
+      }
+    })
+  };
 
-        )
-    }
-});
+  return (<div>
+      <div>CSS and XPath checker</div>
+      <input type="radio" name="rtype" value="css"
+             onChange={onRadioChange}
+             checked={type === 'css'}/>
+      <label>CSS</label>
+      <input type="radio" name="rtype" value="xpath"
+             onChange={onRadioChange}
+             checked={type === 'xpath'}/>
+      <label>XPath</label> /
+      <span>{match}</span> match(es)
+      <input type="text" size={40} value={selector}
+             onChange={onTextChange}/>
+    </div>
+  );
+};
 
 ReactDOM.render(
-    <App />,
-    document.getElementById('content')
+  <App/>,
+  document.getElementById('content')
 );

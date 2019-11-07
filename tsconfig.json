@@ -1,0 +1,20 @@
+
+{
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "noUnusedLocals" : true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "lib": ["dom", "esnext"],
+    "module": "esnext",
+    "target": "es6",
+    "jsx": "react",
+    "rootDir": "src",
+    "noEmitOnError": true,
+    "typeRoots": [ "node_modules/@types" ],
+
+  }
+}
