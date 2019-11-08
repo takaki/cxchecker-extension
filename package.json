@@ -1,14 +1,17 @@
 {
   "name": "cxchecker-extension",
-  "version": "0.9.0",
+  "version": "0.11.0",
   "description": "A helper tool for to confirm CSS and XPath selector.",
-  "main": "popup.js",
+  "main": "src/popup.js",
   "scripts": {
+    "watch": "webpack --config webpack/webpack.dev.js --watch",
+    "build": "webpack --config webpack/webpack.prod.js",
+    "clean": "rimraf dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/takaki/cxchecker-extension.git"
+    "url": "https://gitlab.com/takatan/cxchecker-extension.git"
   },
   "keywords": [
     "chrome",
@@ -16,19 +19,22 @@
     "xpath"
   ],
   "author": "TANIGUCHI Takaki <takaki@asis.media-as.org>",
-  "license": "GPL3",
+  "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/takaki/cxchecker-extension/issues"
+    "url": "https://gitlab.com/takatan/cxchecker-extension/issues"
   },
   "dependencies": {
-    "react": "^15.1.0",
-    "react-dom": "^15.1.0"
-  },
-  "devDependencies": {
-    "babel-core": "^6.10.4",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.11.1",
-    "webpack": "^1.13.1"
+    "@types/chrome": "^0.0.91",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.4",
+    "copy-webpack-plugin": "^5.0.5",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "rimraf": "^3.0.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-merge": "^4.2.2"
   }
 }
