@@ -27,7 +27,9 @@ chrome.runtime.onMessage.addListener(
 
 export const cleanCss = () => {
   document.querySelectorAll<HTMLElement>('*').forEach((e) => {
-    e.style.background = '';
-    e.style.border = '';
+    if (e.style) {
+      e.style.background = '';
+      e.style.border = '';
+    }
   });
 };
