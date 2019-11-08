@@ -1,6 +1,6 @@
 {
     "name": "CSS and XPath checker",
-    "version": "0.11.0",
+    "version": "0.20.0",
     "description": "A helper tool for to confirm CSS and XPath selector.",
     "icons": {
 	"128": "icon_128.png",

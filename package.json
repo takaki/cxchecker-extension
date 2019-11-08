@@ -1,6 +1,6 @@
 {
   "name": "cxchecker-extension",
-  "version": "0.11.0",
+  "version": "0.20.0",
   "description": "A helper tool for to confirm CSS and XPath selector.",
   "main": "src/popup.js",
   "scripts": {
